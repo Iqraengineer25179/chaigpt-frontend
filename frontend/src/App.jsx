@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { StoreProvider } from './context/StoreContext';
-import Home         from './assets/pages/Home/Home';
+import Home         from './assets/pages/home/home';
 import Menu         from './assets/pages/Menu/Menu';
 import Cart         from './assets/pages/Cart/Cart';
 import AboutPage    from './assets/pages/AboutPages/AboutPage';

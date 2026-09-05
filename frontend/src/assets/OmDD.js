@@ -29,7 +29,7 @@ import BagelSmash from "./BagelSmash.png"
 import FruitWaffle from "./FruitWaffle.png"
 import FrenchToast from './FrenchToast.png'
 import SunnyOats from "./SunnyOats.png"
-import BagelwithLox from "./BagelwithLox.png"
+import BagelwithLox from "./BagelWithLox.png"
 import ChickenCaesarSalad from "./ChickenCaesarSalad.png"
 import ClubSandwich from "./ClubSandwich.png"
 import VeggieWrap from "./VeggieWrap.png"
