@@ -21,10 +21,13 @@ connectDB();
 // ── Middleware ────────────────────────────────────────────────────────────────
 // Allow requests from local dev AND the deployed Vercel frontend
 const allowedOrigins = [
-    "http://localhost:5173",
-    "http://localhost:5174",
-    process.env.FRONTEND_URL,       // set this in Render env vars
-].filter(Boolean);
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "https://chaigpt-frontend.netlify.app",
+  "https://chaigpt-frontend-oc2u.vercel.app",
+  process.env.FRONTEND_URL,
+].filter(Boolean);     // set this in Render env vars
+
 
 app.use(cors({
     origin: (origin, callback) => {
