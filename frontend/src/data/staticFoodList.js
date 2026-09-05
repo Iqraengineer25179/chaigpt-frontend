@@ -20,7 +20,7 @@ import BagelSmash              from '../assets/BagelSmash.png';
 import FruitWaffle             from '../assets/FruitWaffle.png';
 import FrenchToast             from '../assets/FrenchToast.png';
 import BreakfastBurrito        from '../assets/BreakfastBurrito.png';
-import BagelwithLox            from '../assets/BagelwithLox.png';
+import BagelwithLox            from '../assets/BagelWithLox.png';
 import GranolaParfait          from '../assets/GranolaParfait.png';
 import SunnyOats               from '../assets/SunnyOats.png';
 
