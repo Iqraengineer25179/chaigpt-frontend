@@ -1,5 +1,5 @@
 import express from "express";
-import { placeOrder, userOrders, listOrders, updateStatus } from "../controllers/orderController.js";
+import { placeOrder, userOrders, listOrders, updateStatus, deleteOrder } from "../controllers/orderController.js";
 import authMiddleware from "../middleware/auth.js";
 
 const router = express.Router();
@@ -15,5 +15,8 @@ router.get("/list", listOrders);
 
 // POST /api/order/status        — admin: update order status
 router.post("/status", updateStatus);
+
+// DELETE /api/order/delete/:id  — admin: delete an order
+router.delete("/delete/:id", deleteOrder);
 
 export default router;

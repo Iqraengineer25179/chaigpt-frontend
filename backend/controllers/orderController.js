@@ -116,4 +116,21 @@ const updateStatus = async (req, res) => {
     }
 };
 
-export { placeOrder, userOrders, listOrders, updateStatus };
+// ── Delete Order (Admin) ──────────────────────────────────────────────────────
+// DELETE /api/order/delete/:id
+
+const deleteOrder = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const order = await orderModel.findByIdAndDelete(id);
+        if (!order) {
+            return res.status(404).json({ success: false, message: "Order not found." });
+        }
+        res.json({ success: true, message: "Order deleted successfully." });
+    } catch (error) {
+        console.error("Delete Order Error:", error.message);
+        res.status(500).json({ success: false, message: "Server error while deleting order." });
+    }
+};
+
+export { placeOrder, userOrders, listOrders, updateStatus, deleteOrder };
