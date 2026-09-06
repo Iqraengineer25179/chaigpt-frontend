@@ -8,13 +8,21 @@ import { useStore } from '../../../context/StoreContext';
 const getImageSrc = (item, url) =>
     item.isStatic ? item.image : `${url}/images/${item.image}`;
 
+const INITIAL_COUNT = 4;
+const STEP          = 5;
+
 const SpecialOffer = () => {
     const { url, food_list, cartItems, addToCart, updateQuantity, removeFromCart } = useStore();
-    const [showAll, setShowAll] = useState(false);
+    // visibleCount tracks how many items are currently shown
+    const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
 
-    // Use live food_list from backend; fall back to empty while loading
-    const allItems = food_list;
-    const displayItems = showAll ? allItems : allItems.slice(0, 4);
+    const allItems     = food_list;
+    const displayItems = allItems.slice(0, visibleCount);
+    const hasMore      = visibleCount < allItems.length;
+    const isExpanded   = visibleCount > INITIAL_COUNT;
+
+    const handleShowMore = () => setVisibleCount(prev => Math.min(prev + STEP, allItems.length));
+    const handleShowLess = () => setVisibleCount(INITIAL_COUNT);
 
     const addButtonBase    = 'relative flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-white overflow-hidden shadow-lg transition-all duration-300';
     const addButtonHover   = 'hover:scale-105 hover:shadow-amber-500/20';
@@ -134,20 +142,33 @@ const SpecialOffer = () => {
                             })}
                         </div>
 
-                        {/* ── Show More / Less ── */}
-                        {allItems.length > 4 && (
-                            <div className='mt-12 flex justify-center'>
+                        {/* ── Show More / Show Less buttons ── */}
+                        <div className='mt-12 flex justify-center gap-4'>
+                            {/* Show More — only visible when more items exist */}
+                            {hasMore && (
                                 <button
-                                    onClick={() => setShowAll(!showAll)}
+                                    onClick={handleShowMore}
                                     className='relative flex items-center gap-3 bg-gradient-to-r from-red-700 to-amber-700 text-white px-8 py-4 rounded-2xl font-bold text-lg uppercase tracking-wider hover:gap-4 hover:scale-105 hover:shadow-xl hover:shadow-amber-500/20 transition-all duration-300 group border-2 border-amber-400/20 overflow-hidden'
                                 >
                                     <div className='absolute inset-0 bg-gradient-to-r from-amber-500/20 via-transparent to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
                                     <FaFire className='text-xl animate-pulse' />
-                                    <span>{showAll ? 'Show Less' : 'Show More'}</span>
-                                    <div className='h-full w-1 bg-amber-400/30 absolute right-0 top-0 group-hover:animate-border-pulse' />
+                                    <span>See More</span>
+                                    <div className='h-full w-1 bg-amber-400/30 absolute right-0 top-0' />
                                 </button>
-                            </div>
-                        )}
+                            )}
+
+                            {/* See Less — only visible when expanded beyond initial count */}
+                            {isExpanded && (
+                                <button
+                                    onClick={handleShowLess}
+                                    className='relative flex items-center gap-3 bg-gradient-to-r from-slate-700 to-slate-600 text-white px-8 py-4 rounded-2xl font-bold text-lg uppercase tracking-wider hover:scale-105 hover:shadow-xl hover:shadow-slate-500/20 transition-all duration-300 group border-2 border-slate-500/30 overflow-hidden'
+                                >
+                                    <div className='absolute inset-0 bg-gradient-to-r from-slate-500/10 via-transparent to-slate-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+                                    <FaFire className='text-xl opacity-50' />
+                                    <span>See Less</span>
+                                </button>
+                            )}
+                        </div>
                     </>
             </div>
         </div>

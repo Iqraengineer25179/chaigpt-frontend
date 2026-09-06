@@ -104,11 +104,21 @@ const Footer = () => {
   <p className='text-amber-400 text-lg mb-2 font-playfair'>
     &copy; 2026 Chai-Gpt. All rights reserved.
   </p>
-  <div className='group inline-block'>
-    <a href="https://hexagondigitalservices.com"
-      target='_blank' className='text-lg font-sacramento bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 bg-clip-text text-transparent hover:text-purple-300 transition-all duration-500'>
-      Designed by Iqra Aman .
-    </a>
+  <div className='flex flex-col items-center gap-1 mt-2'>
+    <div className='group inline-block'>
+      <a href="https://hexagondigitalservices.com"
+        target='_blank' className='text-lg font-sacramento bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 bg-clip-text text-transparent hover:text-purple-300 transition-all duration-500'>
+        Developed by Iqra Baloch
+      </a>
+    </div>
+    <div className='flex flex-wrap justify-center gap-4 text-sm text-amber-300/80 mt-1'>
+      <a href="tel:03172580321" className='hover:text-amber-400 transition-colors'>
+        📞 03172580321
+      </a>
+      <a href="mailto:engineeriqra30@gmail.com" className='hover:text-amber-400 transition-colors'>
+        ✉️ engineeriqra30@gmail.com
+      </a>
+    </div>
   </div>
 </div>
 
