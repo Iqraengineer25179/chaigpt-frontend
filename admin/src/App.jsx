@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route, NavLink, Navigate } from 'react-router-dom';
 import { GiChefToque } from 'react-icons/gi';
 import { FiPlusSquare, FiList, FiShoppingBag } from 'react-icons/fi';
-import AddItem    from './pages/AddItem';
+import AddItem   from './pages/AddItem';
 import ListItems  from './pages/ListItems';
 import Orders     from './pages/Orders';
 
@@ -11,6 +11,9 @@ const navLinks = [
   { to: '/list',   label: 'Food List', icon: FiList        },
   { to: '/orders', label: 'Orders',    icon: FiShoppingBag },
 ];
+
+// Live Vercel Backend Base URL
+const url = "https://chaigpt-backend-h6xxnezdc-iqra16.vercel.app";
 
 const App = () => (
   <div className='min-h-screen flex flex-col'>
@@ -42,9 +45,9 @@ const App = () => (
       <main className='flex-1 p-6 bg-slate-950 overflow-y-auto'>
         <Routes>
           <Route path='/'       element={<Navigate to='/add' replace />} />
-          <Route path='/add'    element={<AddItem />} />
-          <Route path='/list'   element={<ListItems />} />
-          <Route path='/orders' element={<Orders />} />
+          <Route path='/add'    element={<AddItem url={url} />} />
+          <Route path='/list'   element={<ListItems url={url} />} />
+          <Route path='/orders' element={<Orders url={url} />} />
         </Routes>
       </main>
     </div>

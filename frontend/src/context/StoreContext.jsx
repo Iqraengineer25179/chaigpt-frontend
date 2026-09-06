@@ -5,7 +5,7 @@ import staticFoodList from '../data/staticFoodList';
 export const StoreContext = createContext();
 
 // Falls back to localhost during local development
-const API_BASE = import.meta.env.VITE_API_URL || 'https://chaigpt-backend.vercel.app';
+const API_BASE = "https://chaigpt-backend-h6xxnezdc-iqra16.vercel.app";
 
 // ── Cart Reducer ──────────────────────────────────────────────────────────────
 const cartReducer = (state, action) => {
