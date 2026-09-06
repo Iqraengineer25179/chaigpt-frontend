@@ -9,7 +9,7 @@ const getImageSrc = (item, url) =>
     item.isStatic ? item.image : `${url}/images/${item.image}`;
 
 const INITIAL_COUNT = 4;
-const STEP          = 5;
+const STEP          = 4;
 
 const SpecialOffer = () => {
     const { url, food_list, cartItems, addToCart, updateQuantity, removeFromCart } = useStore();

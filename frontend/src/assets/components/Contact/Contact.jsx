@@ -67,7 +67,7 @@ const Contact = () => {
   <div className='pl-12 relative space-y-2 z-10'>
     <p className='text-amber-100 font-light flex items-center'>
       <FiGlobe className='text-green-400 text-xl mr-2' />
-      +92 3123386509
+      03172580321
     </p>
   </div>
 </div>
@@ -83,7 +83,7 @@ const Contact = () => {
 
   <div className='pl-12 relative z-10'>
     <p className='text-amber-100 font-light text-lg'>
-      amanullahnohri@gmail.com
+      engineeriqra30@gmail.com
     </p>
   </div>
 </div>
