@@ -20,20 +20,32 @@ connectDB();
 
 // ── Middleware ────────────────────────────────────────────────────────────────
 const allowedOrigins = [
-  "http://localhost:5173",
-  "http://localhost:5174",
-  "https://chaigpt-frontend.netlify.app",
-  "https://chaigpt-frontend-oc2u.vercel.app",
-  process.env.FRONTEND_URL,
+    "http://localhost:5173",
+    "http://localhost:5174",
+    // Netlify
+    "https://chaigpt-frontend.netlify.app",
+    "https://agent-6a9c1f7f951ee5457fd94ca7--chaigpt-frontend.netlify.app",
+    // Vercel frontend
+    "https://chaigpt-frontend.vercel.app",
+    "https://chaigpt-frontend-oc2u.vercel.app",
+    process.env.FRONTEND_URL,
 ].filter(Boolean);
 
 app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) return callback(null, true);
-    return callback(new Error(`CORS blocked: ${origin}`));
-  },
-  credentials: true,
+    origin: (origin, callback) => {
+        // Allow no-origin requests (Postman, mobile, server-to-server)
+        if (!origin) return callback(null, true);
+        // Allow any *.netlify.app or *.vercel.app subdomain
+        if (
+            allowedOrigins.includes(origin) ||
+            origin.endsWith(".netlify.app") ||
+            origin.endsWith(".vercel.app")
+        ) {
+            return callback(null, true);
+        }
+        return callback(new Error(`CORS blocked: ${origin}`));
+    },
+    credentials: true,
 }));
 
 app.use(express.json());
